@@ -1,0 +1,62 @@
+<div class="list row">
+    <div class="col-lg-2">
+        <div class="row mb-2">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" (click)="openFilterByPrice()">Price</a>
+                <a class="dropdown-item" (click)="openFilterByBrand()">Brand</a>
+                </div>
+            </div> 
+            <div *ngIf="currentFilter" class="reset">
+                <button style="margin-left: 5px;" class="btn btn-warning" 
+                type="button" id="resetFilterButton" (click)="resetFilter()">Reset Filter</button>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div *ngIf="currentFilter">
+                <div *ngIf="currentFilter=='price'">
+                    <input [(ngModel)]="priceFilter" type="range" id="priceFilter" name="priceFilter" min="0" max="3000" 
+                    (change)="filterItemsByPrice()" >
+                    <label for="priceFilter"> Max Price: {{priceFilter}}</label>
+                </div>
+                <div *ngIf="currentFilter=='brand'">
+                    <div *ngFor="let brand of brandNames">
+                        <label for="{{brand}}" id="{{brand}}">{{brand}}</label>
+                        <input type="checkbox" id="{{brand}}" name="{{brand}}"
+                        (click)="filterItemsByBrand(brand)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <h4>Products</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let product of filteredProducts; let i=index"
+            [class.active]="i==currentIndex" (click)="selectProduct(product, i)">{{product.name}} <span class="product-price">${{product.price}}</span></li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentProduct">
+            <p>Product
+            <button class="btn btn-info" type="button" (click)="editProduct(currentProduct)">Edit</button>
+            <button class="btn btn-info" type="button"  (click)="deleteProduct(currentProduct)"><a style="color: white; text-decoration: none;" href="#">Delete</a></button>
+        </p>
+            <div>
+                <p>Name: {{currentProduct.name}}</p> 
+            </div>
+            <div>
+                <p>Description: {{currentProduct.description}}</p> 
+            </div>
+            <div>
+                <p>Brand: {{currentProduct.brand}}</p> 
+            </div>
+            <div>
+                <img src="{{currentProduct.image}}" class="display-img">
+            </div>
+        </div>
+    </div>
+</div>

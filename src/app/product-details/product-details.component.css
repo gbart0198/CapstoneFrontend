@@ -1,0 +1,28 @@
+.text-input {
+    width: 300px;
+}
+
+.form-div {
+    text-align: left;
+    background-color: s
+}
+
+.input-label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.label-row {
+    padding-top: 5px;
+}
+
+
+.input-row {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.input-div {
+    text-align: right;
+}

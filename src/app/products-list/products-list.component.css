@@ -1,0 +1,10 @@
+.product-price {
+    float: right;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.display-img {
+    max-width: 300px;
+    max-height: 300px;
+}

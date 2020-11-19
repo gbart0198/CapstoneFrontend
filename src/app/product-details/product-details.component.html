@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="name" (change)="editProduct('name')">
+                <label class="form-check-label" for="name">
+                Name
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="price" (change)="editProduct('price')">
+                <label class="form-check-label" for="price">
+                Price
+                </label>
+            </div><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="description" (change)="editProduct('description')">
+                <label class="form-check-label" for="description">
+                Description
+                </label>
+            </div><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="brand" (change)="editProduct('brand')">
+                <label class="form-check-label" for="brand">
+                Brand
+                </label>
+            </div><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="image" (change)="editProduct('image')">
+                <label class="form-check-label" for="image">
+                Image
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-8 form-div">
+                    <form>
+                        <div *ngIf="editName" class="form-row input-row">
+                            <div class="col-lg-3 label-row">
+                            <label for="productName"><span class="input-label">Name</span></label>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="input-div">
+                                    <input name="productName" class="form-control text-input" id="productName"
+                                    type="text" value="{{product.name}}" [(ngModel)]="product.name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="editPrice" class="form-row input-row">
+                            <div class="col-lg-3 label-row">
+                                <label for="productPrice"><span class="input-label">Price ($)</span></label>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="input-div">
+                                    <input name="productPrice" class="form-control text-input" id="productPrice"
+                                    type="number" value="{{product.price}}" [(ngModel)]="product.price"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="editDescription" class="form-row input-row">
+                            <div class="col-lg-3 label-row">
+                                <label for="productDescription"><span class="input-label">Description</span></label>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="input-div">
+                                    <input name="productDescription" class="form-control text-input" id="productDescription"
+                                    type="text" value="{{product.description}}" [(ngModel)]="product.description"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="editBrand" class="form-row input-row">
+                            <div class="col-lg-3 label-row">
+                                <label for="productName"><span class="input-label">Brand</span></label>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="input-div">
+                                    <input name="productBrand" class="form-control text-input" id="productBrand"
+                                    type="text" value="{{product.brand}}" [(ngModel)]="product.brand"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="editImage" class="form-row input-row">
+                            <div class="col-lg-3 label-row">
+                                <label for="productImageFile"><span class="input-label">Image</span></label>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="input-div">
+                                    <input #imgInput name="productImageFile" class="form-control text-input" 
+                                    (change)="onFileChanged(imgInput)" id="productImageFile"
+                                    type="file"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-9">
+                            <button type="button" class="btn btn-success" (click)="confirmEdit()">Confirm Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
