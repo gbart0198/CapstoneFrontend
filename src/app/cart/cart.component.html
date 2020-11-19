@@ -1,0 +1,15 @@
+<div *ngIf="cart">
+    <div *ngFor="let item of cart">
+        {{item.name}}: {{cartQuantity[item.name]}}: ${{item.price*cartQuantity[item.name]}}
+        <input type="number" id="{{item.name}}Quantity" class="item-quantity" [(ngModel)]="cartQuantity[item.name]" min=1>
+        <button type="button" class="btn btn-warning" (click)="removeItem(item)">Remove</button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-danger" (click)="resetCart()"><a href="#" style="text-decoration: none; color: white;">Clear Cart</a></button>
+        <button type="button" class="btn btn-success" (click)="checkout()">Checkout</button>
+    </div>
+</div>
+
+<div *ngIf="checkedOut">
+    <h3>Thank you for your purchase of {{cartTotal}}!</h3>
+</div>

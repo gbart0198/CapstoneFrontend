@@ -12,6 +12,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { UserSignoutComponent } from './user-signout/user-signout.component';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { CartComponent } from './cart/cart.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     ProductDetailsComponent,
     UserLoginComponent,
     UserRegistrationComponent,
-    UserSignoutComponent
+    UserSignoutComponent,
+    CartComponent,
+    DeleteUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
+import { UserAuthenticationService } from '../user-authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,6 +12,8 @@ export class ProductsListComponent implements OnInit {
 
   currentFilter = null;
   priceFilter = 2000;
+  loggedIn: boolean = false;
+  privileged: boolean = false;
   products: any;
   filteredProducts: any;
   allBrands: Set<any>;
@@ -20,10 +23,13 @@ export class ProductsListComponent implements OnInit {
   currentIndex=-1;
   name='';
 
-  constructor(private apiService: ProductsService, private router: Router) { }
+  constructor(private apiService: ProductsService, 
+    private authService: UserAuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.loggedIn = this.authService.isLoggedIn();
+    this.privileged = localStorage.getItem('privilege')=='admin';
   }
 
   getAllProducts() {
@@ -131,6 +137,27 @@ export class ProductsListComponent implements OnInit {
         console.log("err: " + err);
       })
     this.getAllProducts();
+  }
+
+  addToCart(product) {
+    if (localStorage.getItem("cart")) {
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      let duplicate = false;
+      for (let i in cart) {
+        if (cart[i].name==product.name) {
+          duplicate = true;
+        }
+      }
+      if (!duplicate) {
+        console.log(1);
+        cart.push(product);
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+      let cart = [];
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
   }
   
 

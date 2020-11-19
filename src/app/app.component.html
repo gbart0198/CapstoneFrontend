@@ -8,11 +8,26 @@
       <li *ngIf="loggedIn && privileged" class="nav-item">
         <a routerLink="add" class="nav-link">Add Product</a>
       </li>
+      <li *ngIf="loggedIn && privileged" class="nav-item">
+        <a routerLink="register" class="nav-link">Add Account</a>
+      </li>
+      <li *ngIf="loggedIn && privileged" class="nav-item">
+        <a routerLink="delete" class="nav-link">Delete Account</a>
+      </li>
+      <li *ngIf="loggedIn && privileged" class="nav-item">
+        <a routerLink="edit" class="nav-link">Edit Account</a>
+      </li>
       <li *ngIf="!loggedIn" class="nav-item">
         <a routerLink="login" class="nav-link" (click)="reloadComponent()">Login</a>
       </li>
+      <li *ngIf="!loggedIn" class="nav-item">
+        <a routerLink="register" class="nav-link" (click)="reloadComponent()">Register</a>
+      </li>
       <li *ngIf="loggedIn" class="nav-item">
         <a routerLink="logout" class="nav-link" (click)="reloadComponent()">Logout</a>
+      </li>
+      <li *ngIf="loggedIn && !privileged" class="nav-item">
+        <a routerLink="cart" class="nav-link" (click)="reloadComponent()">Cart</a>
       </li>
     </div>
   </nav>

@@ -14,6 +14,14 @@ export class UserAuthenticationService {
     return this.setSession(res);
   }
 
+  register(data) {
+    return this.http.post(apiUrl+"/signup", data);
+  }
+
+  delete(id) {
+    return this.http.delete(`${apiUrl}/${id}`);
+  }
+
   setSession(auth) {
     auth.subscribe(res => {
       localStorage.setItem('id_token', res.token);
@@ -31,6 +39,10 @@ export class UserAuthenticationService {
   logout() {
     localStorage.removeItem('id_token');
     localStorage.removeItem('privilege');
+  }
+
+  update(info, data) {
+    return this.http.patch(`${apiUrl}/${info}`, data);
   }
 
   public isLoggedIn() {

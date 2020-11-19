@@ -41,10 +41,15 @@
     </div>
     <div class="col-md-6">
         <div *ngIf="currentProduct">
-            <p>Product
-            <button class="btn btn-info" type="button" (click)="editProduct(currentProduct)">Edit</button>
-            <button class="btn btn-info" type="button"  (click)="deleteProduct(currentProduct)"><a style="color: white; text-decoration: none;" href="#">Delete</a></button>
-        </p>
+            <div *ngIf="loggedIn && privileged">
+                <button class="btn btn-info" type="button" (click)="editProduct(currentProduct)">Edit</button>
+                <button class="btn btn-info" type="button"  (click)="deleteProduct(currentProduct)">
+                    <a style="color: white; text-decoration: none;" href="#">Delete</a></button>
+            </div>
+            <div *ngIf="loggedIn && !privileged">
+                <button class="btn btn-info" type="button"  (click)="addToCart(currentProduct)">
+                    <a style="color: white; text-decoration: none;" href="#">Add To Cart</a></button>
+            </div>
             <div>
                 <p>Name: {{currentProduct.name}}</p> 
             </div>
@@ -52,7 +57,7 @@
                 <p>Description: {{currentProduct.description}}</p> 
             </div>
             <div>
-                <p>Brand: {{currentProduct.brand}}</p> 
+                <p>Brand: {{currentProduct.brand}}</p>
             </div>
             <div>
                 <img src="{{currentProduct.image}}" class="display-img">
