@@ -1,4 +1,16 @@
 .nav-background {
-    background-image: url("../assets/img/nav-bgnd.png");
+    background-color: rgba(163, 163, 163, 0.7);
     margin-bottom: 10px;
+}
+
+.navbar-brand {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(38, 96, 184);
+}
+
+.nav-link {
+    letter-spacing: 1px;
+    margin-left: 10px;
+    color: rgb(38, 96, 184);
 }

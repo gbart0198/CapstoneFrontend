@@ -1,0 +1,31 @@
+.cart {
+    background-color: rgba(163,163,163,0.7);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 400px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: rgb(38, 96, 184);
+    letter-spacing: 1px;
+}
+
+.header-button {
+    background-color: rgb(38, 96, 184);
+    color: white;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom:3px;
+}
+
+.item-quantity {
+    max-width: 150px;
+}
+
+#thankyou {
+    color: rgb(38, 96, 184);
+    letter-spacing: 1px;
+}

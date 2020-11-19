@@ -1,7 +1,25 @@
 <form>
-    <label for="username-email">Username/Email</label>
-    <input type="text" placeholder="Username/Email" name="info" [(ngModel)]="info">
-    <label for="password">password</label>
-    <input type="password" id="password" name="password" [(ngModel)]="password">
-    <button type="button" class="btn btn-primary" (click)="login()"><a style="text-decoration: none; color: white;" href="#">Submit</a></button>
+    
+    
+    
 </form>
+
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-5">
+        <div class="product-form">
+                <div class="form-group">
+                    <label class="form-label" for="username-email">Username/Email</label>
+                    <input type="text" class="form-control" placeholder="Username/Email" name="info" [(ngModel)]="info">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password">
+                </div>
+
+                <button type="button" class="btn btn-primary header-button" (click)="login()">
+                    <a style="text-decoration: none; color: white;" href="#">Submit</a></button>
+        </div>
+    </div>
+</div>

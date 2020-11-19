@@ -1,0 +1,10 @@
+.header-button {
+    background-color: rgb(38, 96, 184);
+    color: white;
+    margin-right: 1px;
+}
+
+#confirmation {
+    font-style: italic;
+    font-weight: bold;
+}

@@ -1,8 +1,9 @@
-<div class="list row">
+<div class="list row filter-list">
     <div class="col-lg-2">
+        <div class="row mb-4"></div>
         <div class="row mb-2">
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-primary dropdown-toggle header-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Filter
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -11,53 +12,55 @@
                 </div>
             </div> 
             <div *ngIf="currentFilter" class="reset">
-                <button style="margin-left: 5px;" class="btn btn-warning" 
+                <button style="margin-left: 5px;" class="btn btn-warning header-button" 
                 type="button" id="resetFilterButton" (click)="resetFilter()">Reset Filter</button>
             </div>
         </div>
         <div class="row mb-2">
             <div *ngIf="currentFilter">
                 <div *ngIf="currentFilter=='price'">
-                    <input [(ngModel)]="priceFilter" type="range" id="priceFilter" name="priceFilter" min="0" max="3000" 
+                    <input [(ngModel)]="priceFilter" type="range" id="priceFilter" name="priceFilter" step="50" min="0" max="3000" 
                     (change)="filterItemsByPrice()" >
                     <label for="priceFilter"> Max Price: {{priceFilter}}</label>
                 </div>
                 <div *ngIf="currentFilter=='brand'">
-                    <div *ngFor="let brand of brandNames">
-                        <label for="{{brand}}" id="{{brand}}">{{brand}}</label>
-                        <input type="checkbox" id="{{brand}}" name="{{brand}}"
+                    <div *ngFor="let brand of brandNames" style="text-align: right;">
+                        <label for="{{brand}}" id="{{brand}}" class="brand-check">{{brand}}</label>
+                        <input type="checkbox" id="{{brand}}" name="{{brand}}" style="align-self: center;"
                         (click)="filterItemsByBrand(brand)">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
-        <h4>Products</h4>
+    <div class="col-lg-8 items-list">
+        <div style="text-align: center;">
+            <h4 id="product-header">Products</h4>
+        </div>
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let product of filteredProducts; let i=index"
             [class.active]="i==currentIndex" (click)="selectProduct(product, i)">{{product.name}} <span class="product-price">${{product.price}}</span></li>
         </ul>
     </div>
-    <div class="col-md-6">
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div *ngIf="currentProduct" class="col-md-4 item">
         <div *ngIf="currentProduct">
             <div *ngIf="loggedIn && privileged">
-                <button class="btn btn-info" type="button" (click)="editProduct(currentProduct)">Edit</button>
-                <button class="btn btn-info" type="button"  (click)="deleteProduct(currentProduct)">
+                <button class="btn btn-info header-button item-options" type="button" (click)="editProduct(currentProduct)">Edit</button>
+                <button class="btn btn-info header-button item-option" type="button"  (click)="deleteProduct(currentProduct)">
                     <a style="color: white; text-decoration: none;" href="#">Delete</a></button>
             </div>
             <div *ngIf="loggedIn && !privileged">
-                <button class="btn btn-info" type="button"  (click)="addToCart(currentProduct)">
+                <button class="btn btn-info header-button" type="button"  (click)="addToCart(currentProduct)">
                     <a style="color: white; text-decoration: none;" href="#">Add To Cart</a></button>
             </div>
             <div>
-                <p>Name: {{currentProduct.name}}</p> 
+                <p class="product-name">{{currentProduct.name}}</p> 
             </div>
             <div>
-                <p>Description: {{currentProduct.description}}</p> 
-            </div>
-            <div>
-                <p>Brand: {{currentProduct.brand}}</p>
+                <p class="product-description">{{currentProduct.description}}</p> 
             </div>
             <div>
                 <img src="{{currentProduct.image}}" class="display-img">

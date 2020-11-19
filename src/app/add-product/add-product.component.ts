@@ -30,6 +30,7 @@ export class AddProductComponent implements OnInit {
   }
 
   addProduct() {
+    
     const data = {
       name: this.product.name,
       price: this.product.price,
@@ -37,6 +38,7 @@ export class AddProductComponent implements OnInit {
       brand: this.product.brand,
       file: this.product.image
     };
+    console.log(data);
 
     console.log(data);
 

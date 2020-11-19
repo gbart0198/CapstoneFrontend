@@ -24,7 +24,7 @@ export class ProductsService {
     console.log("data file type: " + typeof(data.file));
     formData.append('image', data.file);
     formData.append('name', data.name);
-    formData.append('description', data.brand);
+    formData.append('description', data.description);
     formData.append('brand', data.brand);
     formData.append('price', data.price);
     console.log(formData);
@@ -38,7 +38,7 @@ export class ProductsService {
       console.log('image type: ' + typeof(data.file));
     }
     formData.append('name', data.name);
-    formData.append('description', data.brand);
+    formData.append('description', data.description);
     formData.append('brand', data.brand);
     formData.append('price', data.price);
     return this.http.patch(`${apiUrl}/${id}`, formData);
